@@ -1,0 +1,13 @@
+{
+  "components": [
+    {
+      "type": "Tz.Cache.Redis.RedisCache, Tz.Cache.Redis",
+      "services": [
+        {
+          "type": "Tz.Cache.ICache, Tz.Cache"
+        }
+      ],
+      "injectProperties": true
+    }
+  ]
+}
