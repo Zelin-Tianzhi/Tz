@@ -141,7 +141,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\ExampleManage\ExampleManageAreaRegistration.cs" />
+    <Compile Include="Areas\ReportManage\ReportManageAreaRegistration.cs" />
+    <Compile Include="Areas\SystemManage\SystemManageAreaRegistration.cs" />
+    <Compile Include="Areas\SystemSecurity\SystemSecurityAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -426,15 +430,28 @@
     <Folder Include="Areas\ExampleManage\Controllers\" />
     <Folder Include="Areas\ExampleManage\Models\" />
     <Folder Include="Areas\ExampleManage\Views\Shared\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\ReportManage\Controllers\" />
+    <Folder Include="Areas\ReportManage\Models\" />
+    <Folder Include="Areas\ReportManage\Views\Shared\" />
+    <Folder Include="Areas\SystemManage\Controllers\" />
+    <Folder Include="Areas\SystemManage\Models\" />
+    <Folder Include="Areas\SystemManage\Views\Shared\" />
+    <Folder Include="Areas\SystemSecurity\Controllers\" />
+    <Folder Include="Areas\SystemSecurity\Models\" />
+    <Folder Include="Areas\SystemSecurity\Views\Shared\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\autofac.json" />
+    <Content Include="Configs\autofac.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tz.Application\Tz.Application.csproj">
+      <Project>{5835f58f-5da9-415c-b35b-69cbc6a13c23}</Project>
+      <Name>Tz.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tz.Cache.Redis\Tz.Cache.Redis.csproj">
       <Project>{5e6935d3-62f6-4201-bbc3-02653aa927f3}</Project>
       <Name>Tz.Cache.Redis</Name>
@@ -443,9 +460,26 @@
       <Project>{ce128c8c-cba4-4337-a5af-25870488602a}</Project>
       <Name>Tz.Cache</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tz.Core\Tz.Core.csproj">
+      <Project>{541970bd-b07e-4a84-9dfe-fdd2e2c8bf1e}</Project>
+      <Name>Tz.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Domain\Tz.Domain.csproj">
+      <Project>{196a7834-6803-44c7-94f3-b4e6ec0d1e64}</Project>
+      <Name>Tz.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\ExampleManage\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\SystemManage\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\ReportManage\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\SystemSecurity\Views\web.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

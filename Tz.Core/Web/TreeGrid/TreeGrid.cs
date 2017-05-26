@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Tz.Core
+{ 
     public static class TreeGrid
     {
         public static string TreeGridJson(this List<TreeGridModel> data)

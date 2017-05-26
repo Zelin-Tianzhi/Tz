@@ -1,26 +1,23 @@
-﻿/*******************************************************************************
- * Copyright © 2017 Zl 版权所有
- * Author: Zl
- * Description: Tz通用权限
-*********************************************************************************/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Tz.Domain.Entity.SystemManage;
 using Tz.Domain.IRepository.SystemManage;
 using Tz.Repository.SystemManage;
 
 namespace Tz.Application.SystemManage
 {
-    public class AreaApp
+    partial class ModuleApp
     {
-        private IAreaRepository service = new AreaRepository();
+        private IModuleRepository service = new ModuleRepository();
 
-        public List<AreaEntity> GetList()
+        public List<ModuleEntity> GetList()
         {
-            return service.IQueryable().ToList();
+            return service.IQueryable().OrderBy(t => t.F_SortCode).ToList();
         }
-        public AreaEntity GetForm(string keyValue)
+        public ModuleEntity GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -35,17 +32,17 @@ namespace Tz.Application.SystemManage
                 service.Delete(t => t.F_Id == keyValue);
             }
         }
-        public void SubmitForm(AreaEntity areaEntity, string keyValue)
+        public void SubmitForm(ModuleEntity moduleEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
-                areaEntity.Modify(keyValue);
-                service.Update(areaEntity);
+                moduleEntity.Modify(keyValue);
+                service.Update(moduleEntity);
             }
             else
             {
-                areaEntity.Create();
-                service.Insert(areaEntity);
+                moduleEntity.Create();
+                service.Insert(moduleEntity);
             }
         }
     }

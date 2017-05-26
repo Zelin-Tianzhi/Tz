@@ -10,7 +10,6 @@ namespace Tz.Permission.Controllers
     {
         public ActionResult Index()
         {
-            var obj = Cache.Cache.Get("");
             return View();
         }
 

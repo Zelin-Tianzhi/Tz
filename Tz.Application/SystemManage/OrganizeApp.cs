@@ -1,26 +1,23 @@
-﻿/*******************************************************************************
- * Copyright © 2017 Zl 版权所有
- * Author: Zl
- * Description: Tz通用权限
-*********************************************************************************/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Tz.Domain.Entity.SystemManage;
 using Tz.Domain.IRepository.SystemManage;
 using Tz.Repository.SystemManage;
 
 namespace Tz.Application.SystemManage
 {
-    public class AreaApp
+    public class OrganizeApp
     {
-        private IAreaRepository service = new AreaRepository();
+        private IOrganizeRepository service = new OrganizeRepository();
 
-        public List<AreaEntity> GetList()
+        public List<OrganizeEntity> GetList()
         {
-            return service.IQueryable().ToList();
+            return service.IQueryable().OrderBy(t => t.F_CreatorTime).ToList();
         }
-        public AreaEntity GetForm(string keyValue)
+        public OrganizeEntity GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -35,17 +32,17 @@ namespace Tz.Application.SystemManage
                 service.Delete(t => t.F_Id == keyValue);
             }
         }
-        public void SubmitForm(AreaEntity areaEntity, string keyValue)
+        public void SubmitForm(OrganizeEntity organizeEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
-                areaEntity.Modify(keyValue);
-                service.Update(areaEntity);
+                organizeEntity.Modify(keyValue);
+                service.Update(organizeEntity);
             }
             else
             {
-                areaEntity.Create();
-                service.Insert(areaEntity);
+                organizeEntity.Create();
+                service.Insert(organizeEntity);
             }
         }
     }

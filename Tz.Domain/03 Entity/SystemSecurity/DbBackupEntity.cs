@@ -7,7 +7,7 @@ using System;
 
 namespace Tz.Domain.Entity.SystemSecurity
 {
-    public class DbBackupEntity : IEntity<FilterIPEntity>, ICreationAudited, IDeleteAudited, IModificationAudited
+    public class DbBackupEntity : ICreationAudited, IDeleteAudited, IModificationAudited
     {
         public string F_Id { get; set; }
         public string F_BackupType { get; set; }

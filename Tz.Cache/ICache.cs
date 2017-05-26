@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Tz.Cache
+namespace Tz.Plugin.Cache
 {
     public interface ICache:IStrategy
     {
@@ -25,6 +25,13 @@ namespace Tz.Cache
         /// <param name="key">键值</param>
         /// <param name="data">数据</param>
         void Insert(string key, object data);
+        /// <summary>
+        /// 写入
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="cacheKey"></param>
+        void Insert<T>(string key, T value) where T : class;
 
         /// <summary>
         /// 写入
@@ -33,6 +40,14 @@ namespace Tz.Cache
         /// <param name="data">数据</param>
         /// <param name="expirtime">缓存时间（分钟）</param>
         void Insert(string key, object data, int expirtime);
+        /// <summary>
+        /// 写入
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="cacheKey"></param>
+        /// <param name="expireTime"></param>
+        void Insert<T>(T value, string cacheKey, int expireTime) where T : class;
 
         /// <summary>
         /// 替换
@@ -63,5 +78,7 @@ namespace Tz.Cache
         /// <param name="keyColl"></param>
         /// <returns></returns>
         List<T> GetList<T>(string keyColl) where T : class;
+
+
     }
 }

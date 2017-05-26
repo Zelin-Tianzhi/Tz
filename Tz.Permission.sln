@@ -1,23 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Permission", "Tz.Permission\Tz.Permission.csproj", "{7168AE73-C6B4-469F-BB2B-5F267375F6D9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Common 基础结构层", "01.Common 基础结构层", "{E62C01C3-3DC2-41D8-8F2E-66C8E0DF7792}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Common 基础结构层", "04 Common 基础结构层", "{E62C01C3-3DC2-41D8-8F2E-66C8E0DF7792}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Domain 应用服务", "03.Domain 应用服务", "{6679E3D9-6354-4E3E-B005-5EC5C9459FF5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Domain 应用服务", "03 Domain 应用服务", "{6679E3D9-6354-4E3E-B005-5EC5C9459FF5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Web 应用程序", "04.Web 应用程序", "{58CFE8D7-DA5F-4B74-8C19-B2CDC68AFC83}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Web 应用程序", "01 Web 应用程序", "{58CFE8D7-DA5F-4B74-8C19-B2CDC68AFC83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Core", "Tz.Core\Tz.Core.csproj", "{541970BD-B07E-4A84-9DFE-FDD2E2C8BF1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Cache", "Tz.Cache\Tz.Cache.csproj", "{CE128C8C-CBA4-4337-A5AF-25870488602A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Plugin.Cache", "Tz.Cache\Tz.Plugin.Cache.csproj", "{CE128C8C-CBA4-4337-A5AF-25870488602A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Cache.Redis", "Tz.Cache.Redis\Tz.Cache.Redis.csproj", "{5E6935D3-62F6-4201-BBC3-02653AA927F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Plugin.Cache.Redis", "Tz.Cache.Redis\Tz.Plugin.Cache.Redis.csproj", "{5E6935D3-62F6-4201-BBC3-02653AA927F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Cache.AspNet", "Tz.Cache.AspNet\Tz.Cache.AspNet.csproj", "{EB98ED8D-538A-4187-B56B-F774D12A8863}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Plugin.Cache.AspNet", "Tz.Cache.AspNet\Tz.Plugin.Cache.AspNet.csproj", "{EB98ED8D-538A-4187-B56B-F774D12A8863}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Data", "Tz.Data\Tz.Data.csproj", "{3FE3B448-2E5C-4AD4-A12F-3C714B41BB3A}"
 EndProject

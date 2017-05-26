@@ -10,12 +10,12 @@ namespace Tz.Core
 {
     public class Log
     {
-        private static ILog logger;
+        private ILog logger;
         public Log(ILog log)
         {
             logger = log;
         }
-        public static void Debug(object message)
+        public void Debug(object message)
         {
             logger.Debug(message);
         }

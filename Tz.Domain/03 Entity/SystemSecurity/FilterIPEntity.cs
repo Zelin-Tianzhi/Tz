@@ -7,15 +7,12 @@ using System;
 
 namespace Tz.Domain.Entity.SystemSecurity
 {
-    public class FilterIPEntity : ICreationAudited, IDeleteAudited, IModificationAudited
+    public class FilterIPEntity : IEntity<FilterIPEntity>, ICreationAudited, IDeleteAudited, IModificationAudited
     {
         public string F_Id { get; set; }
-        public string F_BackupType { get; set; }
-        public string F_DbName { get; set; }
-        public string F_FileName { get; set; }
-        public string F_FileSize { get; set; }
-        public string F_FilePath { get; set; }
-        public DateTime? F_BackupTime { get; set; }
+        public bool? F_Type { get; set; }
+        public string F_StartIP { get; set; }
+        public string F_EndIP { get; set; }
         public int? F_SortCode { get; set; }
         public bool? F_DeleteMark { get; set; }
         public bool? F_EnabledMark { get; set; }

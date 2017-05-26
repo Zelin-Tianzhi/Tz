@@ -850,7 +850,17 @@ namespace Tz.Core
         /// <returns></returns>
         public static string MapPath(string path)
         {
-            return HttpContext.Current.Server.MapPath(path);
+            if (HttpContext.Current != null)
+            {
+                return HttpContext.Current.Server.MapPath(path);
+            }
+            var applicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+            if (string.IsNullOrWhiteSpace(path)) return (applicationBase + path);
+            path = path.Replace("/", @"\");
+            if (!path.StartsWith(@"\"))
+                path = @"\" + path;
+            path = path.Substring(path.IndexOf('\\') + (applicationBase.EndsWith(@"\") ? 1 : 0));
+            return (applicationBase + path);
         }
         #endregion
     }

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +44,55 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="01 Infrastructure\DbLogType.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemManage\AreaApp.cs" />
+    <Compile Include="SystemManage\DutyApp.cs" />
+    <Compile Include="SystemManage\ItemsApp.cs" />
+    <Compile Include="SystemManage\ItemsDetailApp.cs" />
+    <Compile Include="SystemManage\ModuleApp.cs" />
+    <Compile Include="SystemManage\ModuleButtonApp.cs" />
+    <Compile Include="SystemManage\OrganizeApp.cs" />
+    <Compile Include="SystemManage\RoleApp.cs" />
+    <Compile Include="SystemManage\RoleAuthorizeApp.cs" />
+    <Compile Include="SystemManage\UserApp.cs" />
+    <Compile Include="SystemManage\UserLogOnApp.cs" />
+    <Compile Include="SystemSecurity\DbBackupApp.cs" />
+    <Compile Include="SystemSecurity\FilterIPApp.cs" />
+    <Compile Include="SystemSecurity\LogApp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tz.Cache.AspNet\Tz.Plugin.Cache.AspNet.csproj">
+      <Project>{eb98ed8d-538a-4187-b56b-f774d12a8863}</Project>
+      <Name>Tz.Plugin.Cache.AspNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Cache.Redis\Tz.Plugin.Cache.Redis.csproj">
+      <Project>{5e6935d3-62f6-4201-bbc3-02653aa927f3}</Project>
+      <Name>Tz.Plugin.Cache.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Cache\Tz.Plugin.Cache.csproj">
+      <Project>{ce128c8c-cba4-4337-a5af-25870488602a}</Project>
+      <Name>Tz.Plugin.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Core\Tz.Core.csproj">
+      <Project>{541970bd-b07e-4a84-9dfe-fdd2e2c8bf1e}</Project>
+      <Name>Tz.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Data\Tz.Data.csproj">
+      <Project>{3fe3b448-2e5c-4ad4-a12f-3c714b41bb3a}</Project>
+      <Name>Tz.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Domain\Tz.Domain.csproj">
+      <Project>{196a7834-6803-44c7-94f3-b4e6ec0d1e64}</Project>
+      <Name>Tz.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Repository\Tz.Repository.csproj">
+      <Project>{fe7f55dc-9fd3-4018-a519-8a94072329e6}</Project>
+      <Name>Tz.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

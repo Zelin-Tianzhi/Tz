@@ -1,5 +1,7 @@
 ﻿using System.Configuration;
+using System.IO;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace Tz.Core
 {
@@ -38,6 +40,21 @@ namespace Tz.Core
                 xNode.AppendChild(xElem2);
             }
             xDoc.Save(HttpContext.Current.Server.MapPath("~/Configs/system.config"));
+        }
+        /// <summary>
+        /// 获取配置文件
+        /// </summary>
+        /// <param name="configPath"></param>
+        /// <returns></returns>
+        public static T GetConfig<T>(string configPath) where T : class
+        {
+            T config;
+            using (var fs = new FileStream(configPath,FileMode.Open,FileAccess.Read,FileShare.ReadWrite))
+            {
+                var xs = new XmlSerializer(typeof(T));
+                config = (T)xs.Deserialize(fs);
+            }
+            return config;
         }
     }
 }

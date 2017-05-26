@@ -1,4 +1,4 @@
-﻿namespace Tz.Cache
+﻿namespace Tz.Plugin.Cache
 {
     public interface IStrategy
     {
