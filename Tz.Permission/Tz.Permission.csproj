@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -139,6 +140,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\Handler\BaseController.cs" />
+    <Compile Include="App_Start\Handler\HandlerAjaxOnlyAttribute.cs" />
+    <Compile Include="App_Start\Handler\HandlerAuthorizeAttribute.cs" />
+    <Compile Include="App_Start\Handler\HandlerErrorAttribute.cs" />
+    <Compile Include="App_Start\Handler\HandlerLoginAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\ExampleManage\ExampleManageAreaRegistration.cs" />
     <Compile Include="Areas\ReportManage\ReportManageAreaRegistration.cs" />
@@ -418,11 +424,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -439,7 +442,6 @@
     <Folder Include="Areas\SystemSecurity\Controllers\" />
     <Folder Include="Areas\SystemSecurity\Models\" />
     <Folder Include="Areas\SystemSecurity\Views\Shared\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -452,13 +454,17 @@
       <Project>{5835f58f-5da9-415c-b35b-69cbc6a13c23}</Project>
       <Name>Tz.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tz.Cache.Redis\Tz.Cache.Redis.csproj">
-      <Project>{5e6935d3-62f6-4201-bbc3-02653aa927f3}</Project>
-      <Name>Tz.Cache.Redis</Name>
+    <ProjectReference Include="..\Tz.Cache.AspNet\Tz.Plugin.Cache.AspNet.csproj">
+      <Project>{eb98ed8d-538a-4187-b56b-f774d12a8863}</Project>
+      <Name>Tz.Plugin.Cache.AspNet</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tz.Cache\Tz.Cache.csproj">
+    <ProjectReference Include="..\Tz.Cache.Redis\Tz.Plugin.Cache.Redis.csproj">
+      <Project>{5e6935d3-62f6-4201-bbc3-02653aa927f3}</Project>
+      <Name>Tz.Plugin.Cache.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Cache\Tz.Plugin.Cache.csproj">
       <Project>{ce128c8c-cba4-4337-a5af-25870488602a}</Project>
-      <Name>Tz.Cache</Name>
+      <Name>Tz.Plugin.Cache</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tz.Core\Tz.Core.csproj">
       <Project>{541970bd-b07e-4a84-9dfe-fdd2e2c8bf1e}</Project>
@@ -467,6 +473,10 @@
     <ProjectReference Include="..\Tz.Domain\Tz.Domain.csproj">
       <Project>{196a7834-6803-44c7-94f3-b4e6ec0d1e64}</Project>
       <Name>Tz.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Mapping\Tz.Mapping.csproj">
+      <Project>{071c89a9-c657-4b50-ac4c-825343c61275}</Project>
+      <Name>Tz.Mapping</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -480,6 +490,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\SystemSecurity\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\database.config" />
+    <Content Include="Configs\system.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Default.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,8 +7,8 @@
     <ProjectGuid>{5E6935D3-62F6-4201-BBC3-02653AA927F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tz.Cache.Redis</RootNamespace>
-    <AssemblyName>Tz.Cache.Redis</AssemblyName>
+    <RootNamespace>Tz.Plugin.Cache.Redis</RootNamespace>
+    <AssemblyName>Tz.Plugin.Cache.Redis</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -13,7 +13,7 @@ namespace Tz.Core
         {
             get { return new OperatorProvider(); }
         }
-        private string LoginUserKey = "nfine_loginuserkey_2016";
+        private string LoginUserKey = SysConstant.TZ_LOGINUSER_KEY;
         private string LoginProvider = Configs.GetValue("LoginProvider");
 
         public OperatorModel GetCurrent()
@@ -39,8 +39,8 @@ namespace Tz.Core
             {
                 WebHelper.WriteSession(LoginUserKey, DESEncrypt.Encrypt(operatorModel.ToJson()));
             }
-            WebHelper.WriteCookie("nfine_mac", Md5.md5(Net.GetMacByNetworkInterface().ToJson(), 32));
-            WebHelper.WriteCookie("nfine_licence", Licence.GetLicence());
+            //WebHelper.WriteCookie("tz_mac", Md5.md5(Net.GetMacByNetworkInterface().ToJson(), 32));
+            //WebHelper.WriteCookie("tz_licence", Licence.GetLicence());
         }
         public void RemoveCurrent()
         {

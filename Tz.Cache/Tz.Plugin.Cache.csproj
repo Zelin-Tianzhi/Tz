@@ -7,8 +7,8 @@
     <ProjectGuid>{CE128C8C-CBA4-4337-A5AF-25870488602A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tz.Cache</RootNamespace>
-    <AssemblyName>Tz.Cache</AssemblyName>
+    <RootNamespace>Tz.Plugin.Cache</RootNamespace>
+    <AssemblyName>Tz.Plugin.Cache</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

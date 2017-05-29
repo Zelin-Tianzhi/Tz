@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tz.Plugin.Cache.AspNet</RootNamespace>
-    <AssemblyName>Tz.Cache.AspNet</AssemblyName>
+    <AssemblyName>Tz.Plugin.Cache.AspNet</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -6,7 +6,7 @@ namespace Tz.Core
 {
     public class DESEncrypt
     {
-        private static string DESKey = "tz_permission_2017";
+        private static string DESKey = SysConstant.DES_KEY;
 
         #region ========加密========
         /// <summary>

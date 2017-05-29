@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Tz.Plugin.Cache
 {
-    public class Cache
+    public static class Cache
     {
         private static ICache _cache = null;
         private static readonly object _cacheLocker = new object();
