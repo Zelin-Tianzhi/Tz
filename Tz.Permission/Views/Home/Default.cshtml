@@ -20,23 +20,18 @@
                 labels: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "8月", "10月", "11月", "12月"],
                 datasets: [
                     {
-                        label: "My First dataset",
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        label: "迟到",
+                        pointBackgroundColor: "rgba(195,195,195,1)",
+                        borderColor: "rgba(220,220,220,1)",
+                        pointBorderColor: "rgba(220,220,220,1)",
                         data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
                     },
                     {
-                        label: "My Second dataset",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        pointColor: "rgba(151,187,205,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        label: "缺卡",
+                        pointBackgroundColor: "rgba(151,187,205,1)",
+                        borderColor: "rgba(151,187,205,0.2)",
+                        backgroundColor: "rgba(151,187,205,0.2)",
+                        pointBorderColor: "rgba(151,187,205,1)",
                         data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
                     }
                 ]
@@ -44,10 +39,10 @@
             var ctx = document.getElementById("salarychart").getContext("2d");
             window.myLine = new Chart(ctx,{
                 type: 'line',
-                data: lineChartData
-            }, {
-                responsive: false,
-                bezierCurve: false
+                data: lineChartData,
+                options: {
+                    steppedLine: true
+                }
             });
         }
         function GetLeaveChart() {
@@ -56,36 +51,33 @@
             var b_value = randomScalingFactor();
             var c_value = randomScalingFactor();
             var d_value = randomScalingFactor();
-            var doughnutData = [
-	            {
-	                value: a_value,
-	                color: "#F7464A",
-	                highlight: "#FF5A5E",
-	                label: "事假"
-	            },
-	            {
-	                value: b_value,
-	                color: "#46BFBD",
-	                highlight: "#5AD3D1",
-	                label: "病假"
-	            },
-	            {
-	                value: c_value,
-	                color: "#FDB45C",
-	                highlight: "#FFC870",
-	                label: "公休假"
-	            },
-	            {
-	                value: d_value,
-	                color: "#949FB1",
-	                highlight: "#A8B3C5",
-	                label: "调休假"
-	            }
-            ];
+            var doughnutData = {
+                datasets: [{
+                    data: [a_value, b_value, c_value, d_value],
+                    backgroundColor: [
+                        '#F7464A',
+                        '#46BFBD',
+                        '#FDB45C',
+                        '#949FB1'
+                    ]
+                }],
+
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: [
+                    '事假',
+                    '病假',
+                    '公休假',
+                    '调休'
+                ]
+            };
             var ctx = document.getElementById("leavechart").getContext("2d");
             window.myDoughnut = new Chart(ctx, {
                 type: 'doughnut',
-                data: doughnutData
+                data: doughnutData,
+                options: {
+                    responsive: false,
+                    bezierCurve: false
+                }
                 });
             $("#a_value").html(a_value + "小时");
             $("#b_value").html(b_value + "小时");
@@ -101,7 +93,7 @@
                 <div class="panel-heading">
                     <i class="fa fa-line-chart fa-lg" style="padding-right: 5px;"></i>关键数据实时指标
                     <div style="float: right; position: relative; top: -4px; right: 0px;">
-                        <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=1" width="330" height="35" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                        <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=1" width="350" height="35" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -175,13 +167,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><i class="fa fa-pie-chart fa-lg" style="padding-right: 5px;"></i>请假统计</div>
                         <div class="panel-body" style="padding-top: 20px;">
-                            <canvas id="leavechart" style="height: 160px; width: 100%;"></canvas>
-                            <div style="text-align: center; padding-top: 20px;">
-                                <span><i class="fa fa-square" style="color: #F7464A; font-size: 20px; padding-right: 5px; vertical-align: middle; margin-top: -3px;"></i>事假</span>
-                                <span style="margin-left: 10px;"><i class="fa fa-square" style="color: #46BFBD; font-size: 20px; padding-right: 5px; vertical-align: middle; margin-top: -3px;"></i>病假</span>
-                                <span style="margin-left: 10px;"><i class="fa fa-square" style="color: #FDB45C; font-size: 20px; padding-right: 5px; vertical-align: middle; margin-top: -3px;"></i>公休假</span>
-                                <span style="margin-left: 10px;"><i class="fa fa-square" style="color: #949FB1; font-size: 20px; padding-right: 5px; vertical-align: middle; margin-top: -3px;"></i>调休假</span>
-                            </div>
+                            <canvas id="leavechart" style="height: 200px; width: 100%;"></canvas>
                             <div style="margin-top: 20px; padding-top: 18px; height: 60px; border-top: 1px solid #e6e6e6;">
                                 <div style="width: 25%; text-align: center; float: left;">
                                     <span id="a_value">16.5小时</span>

@@ -149,6 +149,7 @@
     <Compile Include="Areas\ExampleManage\ExampleManageAreaRegistration.cs" />
     <Compile Include="Areas\ReportManage\ReportManageAreaRegistration.cs" />
     <Compile Include="Areas\SystemManage\Controllers\AreaController.cs" />
+    <Compile Include="Areas\SystemManage\Controllers\ModuleController.cs" />
     <Compile Include="Areas\SystemManage\SystemManageAreaRegistration.cs" />
     <Compile Include="Areas\SystemSecurity\SystemSecurityAreaRegistration.cs" />
     <Compile Include="Controllers\ClientsDataController.cs" />
@@ -512,6 +513,9 @@
   <ItemGroup>
     <Content Include="Areas\SystemManage\Views\Area\Index.cshtml" />
     <Content Include="Areas\SystemManage\Views\Area\Form.cshtml" />
+    <Content Include="Areas\SystemManage\Views\Module\Index.cshtml" />
+    <Content Include="Areas\SystemManage\Views\Module\Form.cshtml" />
+    <Content Include="Areas\SystemManage\Views\Module\Details.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Shared\_Form.cshtml" />
     <Content Include="Views\Shared\_Index.cshtml" />

@@ -9,7 +9,7 @@ using Tz.Repository.SystemManage;
 
 namespace Tz.Application.SystemManage
 {
-    partial class ModuleApp
+    public class ModuleApp
     {
         private IModuleRepository service = new ModuleRepository();
 
