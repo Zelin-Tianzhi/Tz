@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Tz.Permission.Controllers
 {
+    [HandlerLogin]
     public class HomeController : Controller
     {
         [HttpGet]
@@ -20,7 +21,7 @@ namespace Tz.Permission.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Contact()
+        public ActionResult About()
         {
             return View();
         }

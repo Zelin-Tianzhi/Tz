@@ -17,7 +17,9 @@ namespace Tz.Permission
         private void WriteLog(ExceptionContext context)
         {
             if (context == null)
+            {
                 return;
+            }
             var log = LogFactory.GetLogger(context.Controller.ToString());
             log.Error(context.Exception);
         }

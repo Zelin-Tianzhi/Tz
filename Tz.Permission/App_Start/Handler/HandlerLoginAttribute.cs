@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using Tz.Core;
 
 namespace Tz.Permission
@@ -19,7 +20,13 @@ namespace Tz.Permission
             if (OperatorProvider.Provider.GetCurrent() == null)
             {
                 WebHelper.WriteCookie("tz_login_error", "overdue");
-                filterContext.HttpContext.Response.Write("<script>top.location.href = '/Login/Index';</script>");
+                filterContext.Result = new RedirectToRouteResult("default",
+                    new System.Web.Routing.RouteValueDictionary {
+                        { "controller","Login"},
+                        { "action","Index"},
+                        { "returnurl",HttpUtility.HtmlEncode(filterContext.HttpContext.Request.RawUrl)}
+                    });
+                //filterContext.HttpContext.Response.Write("<script>top.location.href = '/Login/Index';</script>");
                 return;
             }
         }

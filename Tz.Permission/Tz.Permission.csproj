@@ -148,8 +148,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\ExampleManage\ExampleManageAreaRegistration.cs" />
     <Compile Include="Areas\ReportManage\ReportManageAreaRegistration.cs" />
+    <Compile Include="Areas\SystemManage\Controllers\AreaController.cs" />
     <Compile Include="Areas\SystemManage\SystemManageAreaRegistration.cs" />
     <Compile Include="Areas\SystemSecurity\SystemSecurityAreaRegistration.cs" />
+    <Compile Include="Controllers\ClientsDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -436,12 +438,12 @@
     <Folder Include="Areas\ReportManage\Controllers\" />
     <Folder Include="Areas\ReportManage\Models\" />
     <Folder Include="Areas\ReportManage\Views\Shared\" />
-    <Folder Include="Areas\SystemManage\Controllers\" />
     <Folder Include="Areas\SystemManage\Models\" />
     <Folder Include="Areas\SystemManage\Views\Shared\" />
     <Folder Include="Areas\SystemSecurity\Controllers\" />
     <Folder Include="Areas\SystemSecurity\Models\" />
     <Folder Include="Areas\SystemSecurity\Views\Shared\" />
+    <Folder Include="Views\ClientsData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -508,7 +510,11 @@
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\SystemManage\Views\Area\Index.cshtml" />
+    <Content Include="Areas\SystemManage\Views\Area\Form.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Shared\_Form.cshtml" />
+    <Content Include="Views\Shared\_Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

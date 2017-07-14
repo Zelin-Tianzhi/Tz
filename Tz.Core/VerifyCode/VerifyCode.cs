@@ -328,6 +328,7 @@ namespace Tz.Core
         public byte[] CreateImage()
         {
             string code = GetRandomString();
+            validationCode = code;
             //写入session
             WebHelper.WriteSession(SysConstant.TZ_SESSION_VERIFYCODE, Md5.md5(code.ToLower(), 16));
             MemoryStream target = new MemoryStream();
@@ -710,7 +711,7 @@ namespace Tz.Core
             g.InterpolationMode = InterpolationMode.HighQualityBilinear;
 
             chars = code.ToCharArray();//拆散字符串成单字符数组  
-            validationCode = code;
+            //validationCode = code;
 
             //设置字体显示格式  
             StringFormat format = new StringFormat(StringFormatFlags.NoClip);

@@ -39,6 +39,7 @@
                     <input id="txt_code" maxlength="4" type="text" placeholder="验证码" style="width: 190px; float: left;">
                     <div style="width: 110px; float: right; padding-top: 14px; padding-left: 14px;">
                         看不清？<a id="switchCode" href="javascript:void(0);" style="text-decoration: none;">换一张</a>
+                        <input type="hidden" id="checktoken" value="@ViewBag.Token" />
                         <img id="imgcode" class="authcode" src="~/Login/GetAuthCode?token=@ViewBag.Token" width="90" height="25" />
                     </div>
                 </div>
@@ -77,6 +78,7 @@
                     var $username = $("#txt_account");
                     var $password = $("#txt_password");
                     var $code = $("#txt_code");
+                    var $token = $("#checktoken");
                     if ($username.val() == "") {
                         $username.focus();
                         $.login.formMessage('请输入用户名/手机号/邮箱。');
@@ -93,7 +95,7 @@
                         $("#login_button").attr('disabled', 'disabled').find('span').html("loading...");
                         $.ajax({
                             url: "/Login/CheckLogin",
-                            data: { username: $.trim($username.val()), password: $.md5($.trim($password.val())), code: $.trim($code.val()) },
+                            data: { username: $.trim($username.val()), password: $.md5($.trim($password.val())), code: $.trim($code.val()), token: $.trim($token.val()) },
                             type: "post",
                             dataType: "json",
                             success: function (data) {
