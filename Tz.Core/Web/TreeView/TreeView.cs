@@ -30,7 +30,7 @@ namespace Tz.Core
                     }
                     if (entity.img != null && !string.IsNullOrEmpty(entity.img.Replace("&nbsp;", "")))
                     {
-                        strJson.Append("\"img\":\"" + entity.img.Replace("&nbsp;", "") + "\",");
+                        strJson.Append("\"image\":\"" + entity.img.Replace("&nbsp;", "") + "\",");
                     }
                     if (entity.checkstate != null)
                     {
