@@ -47,7 +47,7 @@ namespace Tz.Plugin.Cache
         /// <param name="value"></param>
         /// <param name="cacheKey"></param>
         /// <param name="expireTime"></param>
-        void Insert<T>(T value, string cacheKey, int expireTime) where T : class;
+        void Insert<T>(string cacheKey, T data, int expireTime) where T : class;
 
         /// <summary>
         /// 替换

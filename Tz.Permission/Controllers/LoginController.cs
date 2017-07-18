@@ -26,7 +26,7 @@ namespace Tz.Permission.Controllers
             VerifyCode verifyCode = new VerifyCode();
             byte[] bytes = verifyCode.CreateImage();
             string code = verifyCode.ValidationCode;
-            Cache.Insert(token, Md5.md5(code.ToLower(),16), 10);
+            Cache.Insert(token, (object)Md5.md5(code.ToLower(),16), 10);
             return File(bytes, @"image/Gif");
         }
         [HttpGet]

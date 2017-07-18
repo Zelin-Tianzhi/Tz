@@ -4,11 +4,11 @@
 }
 <script>
     var keyValue = $.request("keyValue");
+    var itemId = $.request("itemId");
     $(function () {
-        initControl();
         if (!!keyValue) {
             $.ajax({
-                url: "/SystemManage/Area/GetFormJson",
+                url: "/SystemManage/ItemsData/GetFormJson",
                 data: { keyValue: keyValue },
                 dataType: "json",
                 async: false,
@@ -18,20 +18,16 @@
             });
         }
     });
-    function initControl() {
-        $("#F_ParentId").bindSelect({
-            url: "/SystemManage/Area/GetTreeSelectJson"
-        });
-    }
     function submitForm() {
         if (!$('#form1').formValid()) {
             return false;
         }
+        var postData = $("#form1").formSerialize();
+        postData["F_ItemId"] = itemId;
         $.submitForm({
-            url: "/SystemManage/Area/SubmitForm?keyValue=" + keyValue,
-            param: $("#form1").formSerialize(),
+            url: "/SystemManage/ItemsData/SubmitForm?keyValue=" + keyValue,
+            param: postData,
             success: function () {
-                $.currentWindow().$("#gridList").resetSelection();
                 $.currentWindow().$("#gridList").trigger("reloadGrid");
             }
         })
@@ -42,17 +38,15 @@
     <div style="padding-top: 20px; margin-right: 20px;">
         <table class="form">
             <tr>
-                <th class="formTitle">上级</th>
+                <th class="formTitle">名称</th>
                 <td class="formValue">
-                    <select id="F_ParentId" name="F_ParentId" class="form-control required">
-                        <option value="0">父节点</option>
-                    </select>
+                    <input id="F_ItemName" name="F_ItemName" type="text" class="form-control required" placeholder="请输入名称" />
                 </td>
             </tr>
             <tr>
-                <th class="formTitle">名称</th>
+                <th class="formTitle">编号</th>
                 <td class="formValue">
-                    <input id="F_FullName" name="F_FullName" type="text" class="form-control required" placeholder="请输入名称" />
+                    <input id="F_ItemCode" name="F_ItemCode" type="text" class="form-control required" placeholder="请输入编号" />
                 </td>
             </tr>
             <tr>
@@ -64,6 +58,9 @@
             <tr>
                 <th class="formTitle" style="height: 35px;">选项</th>
                 <td class="formValue" style="padding-top: 1px;">
+                    <div class="ckbox">
+                        <input id="F_IsDefault" name="F_IsDefault" type="checkbox"><label for="F_IsDefault">默认</label>
+                    </div>
                     <div class="ckbox">
                         <input id="F_EnabledMark" name="F_EnabledMark" type="checkbox" checked="checked"><label for="F_EnabledMark">有效</label>
                     </div>

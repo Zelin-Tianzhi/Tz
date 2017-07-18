@@ -74,7 +74,7 @@ namespace Tz.Plugin.Cache.AspNet
             {
                 this._cache.Remove(key);
             }
-            this._cache.Insert(key, data, null, DateTime.Now.AddMinutes(10), System.Web.Caching.Cache.NoSlidingExpiration);
+            this._cache.Insert(key, JsonConvert.SerializeObject(data), null, DateTime.Now.AddMinutes(10), System.Web.Caching.Cache.NoSlidingExpiration);
         }
 
         public void Insert(string key, object data, int expireTime)
@@ -86,13 +86,13 @@ namespace Tz.Plugin.Cache.AspNet
             this._cache.Insert(key, data, null, DateTime.Now.AddMinutes((double)expireTime), System.Web.Caching.Cache.NoSlidingExpiration);
         }
 
-        public void Insert<T>(T data, string key, int expireTime) where T : class
+        public void Insert<T>(string key, T data, int expireTime) where T : class
         {
             if(this._cache.Get(key) != null)
             {
                 this._cache.Remove(key);
             }
-            this._cache.Insert(key, data, null, DateTime.Now.AddMinutes((double)expireTime), System.Web.Caching.Cache.NoSlidingExpiration);
+            this._cache.Insert(key, JsonConvert.SerializeObject(data), null, DateTime.Now.AddMinutes((double)expireTime), System.Web.Caching.Cache.NoSlidingExpiration);
         }
 
         public void Remove(string key, int islike = 0)

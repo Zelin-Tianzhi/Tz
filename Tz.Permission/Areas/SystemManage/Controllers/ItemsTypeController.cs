@@ -9,17 +9,17 @@ using Tz.Domain.Entity.SystemManage;
 
 namespace Tz.Permission.Areas.SystemManage.Controllers
 {
-    public class AreaController : BaseController
+    public class ItemsTypeController : BaseController
     {
-        private AreaApp areaApp = new AreaApp();
+        private ItemsApp itemsApp = new ItemsApp();
 
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetTreeSelectJson()
         {
-            var data = areaApp.GetList();
+            var data = itemsApp.GetList();
             var treeList = new List<TreeSelectModel>();
-            foreach (AreaEntity item in data)
+            foreach (ItemsEntity item in data)
             {
                 TreeSelectModel treeModel = new TreeSelectModel();
                 treeModel.id = item.F_Id;
@@ -31,25 +31,41 @@ namespace Tz.Permission.Areas.SystemManage.Controllers
         }
         [HttpGet]
         [HandlerAjaxOnly]
-        public ActionResult GetTreeGridJson(string keyword)
+        public ActionResult GetTreeJson()
         {
-            var data = areaApp.GetList();
+            var data = itemsApp.GetList();
+            var treeList = new List<TreeViewModel>();
+            foreach (ItemsEntity item in data)
+            {
+                TreeViewModel tree = new TreeViewModel();
+                bool hasChildren = data.Count(t => t.F_ParentId == item.F_Id) == 0 ? false : true;
+                tree.id = item.F_Id;
+                tree.text = item.F_FullName;
+                tree.value = item.F_EnCode;
+                tree.parentId = item.F_ParentId;
+                tree.isexpand = true;
+                tree.complete = true;
+                tree.hasChildren = hasChildren;
+                treeList.Add(tree);
+            }
+            return Content(treeList.TreeViewJson());
+        }
+        [HttpGet]
+        [HandlerAjaxOnly]
+        public ActionResult GetTreeGridJson()
+        {
+            var data = itemsApp.GetList();
             var treeList = new List<TreeGridModel>();
-            foreach (AreaEntity item in data)
+            foreach (ItemsEntity item in data)
             {
                 TreeGridModel treeModel = new TreeGridModel();
                 bool hasChildren = data.Count(t => t.F_ParentId == item.F_Id) == 0 ? false : true;
                 treeModel.id = item.F_Id;
-                treeModel.text = item.F_FullName;
                 treeModel.isLeaf = hasChildren;
                 treeModel.parentId = item.F_ParentId;
-                treeModel.expanded = true;
+                treeModel.expanded = hasChildren;
                 treeModel.entityJson = item.ToJson();
                 treeList.Add(treeModel);
-            }
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                treeList = treeList.TreeWhere(t => t.text.Contains(keyword), "id", "parentId");
             }
             return Content(treeList.TreeGridJson());
         }
@@ -57,24 +73,23 @@ namespace Tz.Permission.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = areaApp.GetForm(keyValue);
+            var data = itemsApp.GetForm(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitForm(AreaEntity areaEntity, string keyValue)
+        public ActionResult SubmitForm(ItemsEntity itemsEntity, string keyValue)
         {
-            areaApp.SubmitForm(areaEntity, keyValue);
+            itemsApp.SubmitForm(itemsEntity, keyValue);
             return Success("操作成功。");
         }
         [HttpPost]
         [HandlerAjaxOnly]
-        [HandlerAuthorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            areaApp.DeleteForm(keyValue);
+            itemsApp.DeleteForm(keyValue);
             return Success("删除成功。");
         }
     }

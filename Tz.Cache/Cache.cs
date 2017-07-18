@@ -70,7 +70,7 @@ namespace Tz.Plugin.Cache
             {
                 lock (_cacheLocker)
                 {
-                    _cache.Insert(key, data);
+                    _cache.Insert<T>(key, data);
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace Tz.Plugin.Cache
             {
                 lock (_cacheLocker)
                 {
-                    _cache.Insert(key, data, expirtime);
+                    _cache.Insert<T>(key, data, expirtime);
                 }
             }
         }

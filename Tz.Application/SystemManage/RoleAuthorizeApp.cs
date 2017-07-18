@@ -88,7 +88,7 @@ namespace Tz.Application.SystemManage
                         authorizeurldata.Add(new AuthorizeActionModel { F_Id = moduleButtonEntity.F_ModuleId, F_UrlAddress = moduleButtonEntity.F_UrlAddress });
                     }
                 }
-                Cache.Insert("authorizeurldata_" + roleId, authorizeurldata, 5);
+                Cache.Insert<List<AuthorizeActionModel>>("authorizeurldata_" + roleId, authorizeurldata, 5);
             }
             else
             {

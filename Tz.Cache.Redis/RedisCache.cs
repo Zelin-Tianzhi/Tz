@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Tz.Core;
 
 namespace Tz.Plugin.Cache.Redis
 {
@@ -20,7 +19,7 @@ namespace Tz.Plugin.Cache.Redis
         {
             return Connect((client) =>
             {
-                return client.Exists(key) > 0 ? client.Get<string>(key).ToObject<T>() : default(T);
+                return client.Exists(key) > 0 ? JsonConvert.DeserializeObject<T>(client.Get<string>(key)) : default(T);
             });
         }
 
@@ -76,17 +75,17 @@ namespace Tz.Plugin.Cache.Redis
             });
         }
 
-        public void Insert<T>(T data, string key, int expirtime) where T : class
+        public void Insert<T>(string key, T data, int expirtime) where T : class
         {
             Connect((client) =>
             {
                 if (client.Get(key) == null)
                 {
-                    client.Set(key, data.ToJson(), new TimeSpan(0, expirtime, 0));
+                    client.Set(key, JsonConvert.SerializeObject(data), new TimeSpan(0, expirtime, 0));
                 }
                 else
                 {
-                    client.Replace(key, data.ToJson(), new TimeSpan(0, expirtime, 0));
+                    client.Replace(key, JsonConvert.SerializeObject(data), new TimeSpan(0, expirtime, 0));
                 }
             });
         }
@@ -97,11 +96,11 @@ namespace Tz.Plugin.Cache.Redis
             {
                 if (client.Get(key) == null)
                 {
-                    client.Set(key, data.ToJson());
+                    client.Set(key, JsonConvert.SerializeObject(data));
                 }
                 else
                 {
-                    client.Replace(key, data.ToJson());
+                    client.Replace(key, JsonConvert.SerializeObject(data));
                 }
             });
         }
@@ -125,7 +124,7 @@ namespace Tz.Plugin.Cache.Redis
         {
             return Connect((client) =>
             {
-                return client.Replace(key, data, new TimeSpan(0, expirtime, 0));
+                return client.Replace(key, JsonConvert.SerializeObject(data), new TimeSpan(0, expirtime, 0));
             });
         }
 
@@ -137,7 +136,7 @@ namespace Tz.Plugin.Cache.Redis
                 {
                     return;
                 }
-                var keys = client.Get<string>(key).ToObject<List<string>>();
+                var keys = JsonConvert.DeserializeObject<List<string>>(client.Get<string>(key));
                 var tmpKeys = new List<string>();
                 if (!keys.Any())
                 {
@@ -151,18 +150,18 @@ namespace Tz.Plugin.Cache.Redis
                     {
                         continue;
                     }
-                    var value = (dynamic)data.ToJson();
+                    var value = (dynamic)data;
                     if (value == null)
                     {
                         continue;
                     }
                     value.BeUsed = 1;
-                    string json = value.ToJson();
+                    string json = JsonConvert.SerializeObject(value);
                     Replace(item, json, 3);
                 }
                 if (tmpKeys.Any())
                 {
-                    var json = tmpKeys.ToJson();
+                    var json = JsonConvert.SerializeObject(tmpKeys);
                     client.Del(key);
                     client.Set(key, json);
                 }
