@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Permission", "Tz.Permission\Tz.Permission.csproj", "{7168AE73-C6B4-469F-BB2B-5F267375F6D9}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -38,6 +38,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Repository", "Tz.Repository\Tz.Repository.csproj", "{FE7F55DC-9FD3-4018-A519-8A94072329E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.WebSite", "Tz.WebSite\Tz.WebSite.csproj", "{5338E185-6C27-435E-8B8B-3A5DFFA30568}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09 Tests 单元测试", "09 Tests 单元测试", "{901E9F23-5B3B-4D60-9715-E80C4A8D2FE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.WebSiteTests", "Tz.WebSiteTests\Tz.WebSiteTests.csproj", "{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +93,10 @@ Global
 		{5338E185-6C27-435E-8B8B-3A5DFFA30568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5338E185-6C27-435E-8B8B-3A5DFFA30568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5338E185-6C27-435E-8B8B-3A5DFFA30568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +113,7 @@ Global
 		{071C89A9-C657-4B50-AC4C-825343C61275} = {6679E3D9-6354-4E3E-B005-5EC5C9459FF5}
 		{FE7F55DC-9FD3-4018-A519-8A94072329E6} = {6679E3D9-6354-4E3E-B005-5EC5C9459FF5}
 		{5338E185-6C27-435E-8B8B-3A5DFFA30568} = {58CFE8D7-DA5F-4B74-8C19-B2CDC68AFC83}
+		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB} = {901E9F23-5B3B-4D60-9715-E80C4A8D2FE5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA6FE4FC-2663-4AD6-9475-7FA231CDB2A9}

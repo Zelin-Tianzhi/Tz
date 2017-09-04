@@ -6,6 +6,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -378,6 +379,63 @@ namespace Tz.Core
             }
             return responseStr;
         }
+
+        public static byte[] HttpGetReturnBytes(string url, Hashtable headht = null)
+        {
+            HttpWebRequest request;
+
+            //如果是发送HTTPS请求  
+            if (url.StartsWith("https", StringComparison.OrdinalIgnoreCase))
+            {
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
+                request = WebRequest.Create(url) as HttpWebRequest;
+                request.ProtocolVersion = HttpVersion.Version10;
+            }
+            else
+            {
+                request = WebRequest.Create(url) as HttpWebRequest;
+            }
+            request.Method = "GET";
+            //request.ContentType = "application/x-www-form-urlencoded";
+            request.Accept = "*/*";
+            request.Timeout = 15000;
+            request.AllowAutoRedirect = false;
+            WebResponse response = null;
+            string responseStr = null;
+            byte[] bytes = null;
+            if (headht != null)
+            {
+                foreach (DictionaryEntry item in headht)
+                {
+                    request.Headers.Add(item.Key.ToString(), item.Value.ToString());
+                }
+            }
+
+            try
+            {
+                response = request.GetResponse();
+
+                if (response != null)
+                {
+                    Stream reader =response.GetResponseStream();
+                    Image image = Image.FromStream(reader);
+                    MemoryStream mstream = new MemoryStream();
+                    image.Save(mstream, System.Drawing.Imaging.ImageFormat.Gif);
+                    //bytes = mstream.GetBuffer();
+                    byte[] byData = new Byte[mstream.Length];
+                    mstream.Position = 0;
+                    mstream.Read(byData, 0, byData.Length); mstream.Close();
+                    bytes = byData;
+                    reader.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return bytes;
+        }
+
         #endregion
 
         #region Post With Pic

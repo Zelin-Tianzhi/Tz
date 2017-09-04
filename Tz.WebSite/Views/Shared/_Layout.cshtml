@@ -22,8 +22,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("关于", "About", "Home")</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("充值", "Recharge", "Home")</li>
+                    <li>@Html.ActionLink("活动", "Activity", "Home")</li>
+                    <li>@Html.ActionLink("规则", "GameRule", "Home")</li>
+                    <li>@Html.ActionLink("交易", "Trade", "Home")</li>
+                    <li>@Html.ActionLink("客服中心", "Activity", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -32,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
+            <p>&copy; @DateTime.Now.Year </p>
         </footer>
     </div>
 

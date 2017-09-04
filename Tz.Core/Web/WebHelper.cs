@@ -135,7 +135,11 @@ namespace Tz.Core
         {
             if (key.IsEmpty())
                 return;
-            HttpContext.Current.Session[key] = value;
+            HttpContext context = System.Runtime.Remoting.Messaging.CallContext.HostContext as HttpContext;
+            if (context != null)
+            {
+                context.Session[key] = value;
+            }
         }
 
         /// <summary>

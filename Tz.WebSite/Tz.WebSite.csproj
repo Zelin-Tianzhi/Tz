@@ -51,6 +51,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -114,9 +117,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -149,6 +149,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\UtilitysController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -171,6 +172,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -199,9 +201,17 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Reg.cshtml" />
+    <Content Include="Views\Home\Recharge.cshtml" />
+    <Content Include="Views\Home\Activity.cshtml" />
+    <Content Include="Views\Home\CustomerCenter.cshtml" />
+    <Content Include="Views\Home\ForgotPwd.cshtml" />
+    <Content Include="Views\Home\AntiAddiction.cshtml" />
+    <Content Include="Views\Home\GameRule.cshtml" />
+    <Content Include="Views\Home\Trade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Utility\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -215,6 +225,24 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tz.Cache.AspNet\Tz.Plugin.Cache.AspNet.csproj">
+      <Project>{eb98ed8d-538a-4187-b56b-f774d12a8863}</Project>
+      <Name>Tz.Plugin.Cache.AspNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Cache.Redis\Tz.Plugin.Cache.Redis.csproj">
+      <Project>{5e6935d3-62f6-4201-bbc3-02653aa927f3}</Project>
+      <Name>Tz.Plugin.Cache.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Cache\Tz.Plugin.Cache.csproj">
+      <Project>{ce128c8c-cba4-4337-a5af-25870488602a}</Project>
+      <Name>Tz.Plugin.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Core\Tz.Core.csproj">
+      <Project>{541970bd-b07e-4a84-9dfe-fdd2e2c8bf1e}</Project>
+      <Name>Tz.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
