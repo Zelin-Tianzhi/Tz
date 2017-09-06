@@ -161,17 +161,28 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Css\bootstrap.css" />
+    <Content Include="Content\Css\bootstrap.min.css" />
+    <Content Include="Content\Css\login.css" />
+    <Content Include="Content\Img\zc_03.jpg" />
+    <Content Include="Content\Img\zc_06.jpg" />
+    <Content Include="Content\Img\zc_10.jpg" />
+    <Content Include="Content\Img\zc_12.jpg" />
+    <Content Include="Content\Img\zc_15.jpg" />
+    <Content Include="Content\Img\zc_16.jpg" />
+    <Content Include="Content\Img\zc_19.jpg" />
+    <Content Include="Content\Img\zc_25.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Css\Site.css" />
+    <Content Include="Configs\GlobConfig.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Configs\database.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
