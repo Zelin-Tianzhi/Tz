@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09 Tests 单元测试", "09
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.WebSiteTests", "Tz.WebSiteTests\Tz.WebSiteTests.csproj", "{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.WebApi", "Tz.WebApi\Tz.WebApi.csproj", "{09EF159A-19B2-4447-BCEC-6AA3189EF5DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09EF159A-19B2-4447-BCEC-6AA3189EF5DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EF159A-19B2-4447-BCEC-6AA3189EF5DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09EF159A-19B2-4447-BCEC-6AA3189EF5DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09EF159A-19B2-4447-BCEC-6AA3189EF5DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +120,7 @@ Global
 		{FE7F55DC-9FD3-4018-A519-8A94072329E6} = {6679E3D9-6354-4E3E-B005-5EC5C9459FF5}
 		{5338E185-6C27-435E-8B8B-3A5DFFA30568} = {58CFE8D7-DA5F-4B74-8C19-B2CDC68AFC83}
 		{B1C6BB19-38C3-42A9-8538-0F2C6FFB0AEB} = {901E9F23-5B3B-4D60-9715-E80C4A8D2FE5}
+		{09EF159A-19B2-4447-BCEC-6AA3189EF5DA} = {58CFE8D7-DA5F-4B74-8C19-B2CDC68AFC83}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA6FE4FC-2663-4AD6-9475-7FA231CDB2A9}

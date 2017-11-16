@@ -1,0 +1,13 @@
+{
+  "components": [
+    {
+      "type": "Tz.Plugin.Cache.AspNet.NetCache, Tz.Plugin.Cache.AspNet",
+      "services": [
+        {
+          "type": "Tz.Plugin.Cache.ICache, Tz.Plugin.Cache"
+        }
+      ],
+      "injectProperties": true
+    }
+  ]
+}

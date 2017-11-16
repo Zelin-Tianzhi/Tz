@@ -10,6 +10,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Web;
+using System.Management;
 
 namespace Tz.Core
 {
@@ -120,6 +121,35 @@ namespace Tz.Core
                 macs.Add(ni.GetPhysicalAddress().ToString());
             }
             return macs;
+        }
+
+        /// <summary>  
+        /// 获取网卡地址信息  
+        /// </summary>  
+        /// <returns></returns>  
+        public static string GetMacAddress()
+        {
+            try
+            {
+                string mac = "";
+                ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+                ManagementObjectCollection moc = mc.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    if ((bool)mo["IPEnabled"] == true)
+                    {
+                        mac = mo["MacAddress"].ToString();
+                        break;
+                    }
+                }
+                moc = null;
+                mc = null;
+                return mac;
+            }
+            catch
+            {
+                return "unknow";
+            }
         }
         #endregion
 

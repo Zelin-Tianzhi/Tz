@@ -10,7 +10,7 @@ using Tz.Plugin.Cache;
 
 namespace Tz.WebSite.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -81,6 +81,10 @@ namespace Tz.WebSite.Controllers
             VerifyCode verifyCode = new VerifyCode();
             byte[] bytes = verifyCode.CreateImage();
             string code = verifyCode.ValidationCode;
+            string token = Md5.md5(Guid.NewGuid().ToString(), 16);
+            Log.Debug("生成token：" + token);
+            Cache.Insert(token, (object)Md5.md5(code.ToLower(), 16), 10);
+            byte[] byteArray = System.Text.Encoding.Default.GetBytes(token);
             //string str = string.Empty;
             //for (int i = 0; i < bytes.Count(); i++)
             //{
@@ -99,6 +103,8 @@ namespace Tz.WebSite.Controllers
             //    buffs[i] = (byte)aa[i].ToInt();
             //}
             byte[] result = YSEncrypt.EncryptFishFile(bytes);
+
+            byte[] arr = byteArray.Concat(result).ToArray();
             //string ss = string.Empty;
             //for (int i = 0; i < result.Count(); i++)
             //{
@@ -106,7 +112,7 @@ namespace Tz.WebSite.Controllers
             //    ss += ",";
             //}
             //FileHelper.AppendText(path, "长度：" + result.Count()+"\r\n" + ss + "\r\n");
-            return File(result, @"image/Gif");
+            return File(arr, @"image/Gif");
         }
     }
 }

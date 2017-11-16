@@ -29,7 +29,8 @@ namespace Tz.Repository.SystemSecurity
         }
         public void ExecuteDbBackup(DbBackupEntity dbBackupEntity)
         {
-            DbHelper.ExecuteSqlCommand(string.Format("backup database {0} to disk ='{1}'", dbBackupEntity.F_DbName, dbBackupEntity.F_FilePath));
+            DbHelper helper = new DbHelper();
+            helper.ExecuteSqlCommand(string.Format("backup database {0} to disk ='{1}'", dbBackupEntity.F_DbName, dbBackupEntity.F_FilePath));
             dbBackupEntity.F_FileSize = FileHelper.ToFileSize(FileHelper.GetFileSize(dbBackupEntity.F_FilePath));
             dbBackupEntity.F_FilePath = "/Resource/DbBackup/" + dbBackupEntity.F_FileName;
             this.Insert(dbBackupEntity);

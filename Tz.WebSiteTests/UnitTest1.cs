@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tz.Core.Security;
 using Tz.Core;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Tz.WebSiteTests
 {
@@ -25,14 +26,11 @@ namespace Tz.WebSiteTests
         [TestMethod]
         public void TestYS()
         {
-            var result1 = YSEncrypt.MAKEWORD(202, 201);
-            var result2 = YSEncrypt.MAKELONG(202, 201);
-            var result3 = YSEncrypt.LOWORD((uint)result2);
-            var result4 = YSEncrypt.HIWORD((uint)result2);
-            var result5 = YSEncrypt.LOBYTE(result1);
-            var result6 = YSEncrypt.HIBYTE(result1);
-            //result = YSEncrypt.MAKEWORD(202, 201);
-            Console.WriteLine(result1);
+            Regex rex = new Regex("^[A-Za-z0-9_][A-Za-z0-9_]*$");
+            if (rex.IsMatch("123123adjfhak"))
+            {
+
+            }
         }
     }
 }

@@ -13,8 +13,16 @@ namespace Tz.Data.Extensions
 {
     public class DbHelper
     {
-        private static string connstring = ConfigurationManager.ConnectionStrings["TzDbContext"].ConnectionString;
-        public static int ExecuteSqlCommand(string cmdText)
+        private string connstring = string.Empty;
+        public DbHelper()
+        {
+            connstring = ConfigurationManager.ConnectionStrings["TzDbContext"].ConnectionString;
+        }
+        public DbHelper(string connectionStr)
+        {
+            connstring = ConfigurationManager.ConnectionStrings[connectionStr].ConnectionString;
+        }
+        public int ExecuteSqlCommand(string cmdText)
         {
             using (DbConnection conn = new SqlConnection(connstring))
             {
@@ -23,7 +31,7 @@ namespace Tz.Data.Extensions
                 return cmd.ExecuteNonQuery();
             }
         }
-        private static void PrepareCommand(DbCommand cmd, DbConnection conn, DbTransaction isOpenTrans, CommandType cmdType, string cmdText, DbParameter[] cmdParms)
+        private void PrepareCommand(DbCommand cmd, DbConnection conn, DbTransaction isOpenTrans, CommandType cmdType, string cmdText, DbParameter[] cmdParms)
         {
             if (conn.State != ConnectionState.Open)
                 conn.Open();
@@ -37,5 +45,33 @@ namespace Tz.Data.Extensions
                 cmd.Parameters.AddRange(cmdParms);
             }
         }
+
+         /// <summary>
+         ///  执行查询SQL语句，返回离线记录集
+         /// </summary>
+         /// <param name="strSQL">SQL语句</param>
+         /// <returns>离线记录DataSet</returns>
+         public DataSet GetDataTablebySQL(string strSQL)
+         {
+             using (SqlConnection conn = new SqlConnection(connstring))
+             {
+                 using (SqlCommand cmd = new SqlCommand(strSQL, conn))
+                 {
+                     try
+                     {
+                         conn.Open();//打开数据源连接
+                         DataSet ds = new DataSet();
+                         SqlDataAdapter myAdapter = new SqlDataAdapter(cmd);
+                         myAdapter.Fill(ds);
+                         return ds;
+                     }
+                     catch (System.Data.SqlClient.SqlException ex)
+                     {
+                         conn.Close();//出异常,关闭数据源连接
+                         throw new Exception(string.Format("执行{0}失败:{1}", strSQL, ex.Message));
+                     }
+                 }
+             }
+         }
     }
 }
